@@ -11,6 +11,8 @@ public class LocalizacaoPass {
     String latitudeDestino;
     String longitudeDestino;
 
+    //
+
     LocalizacaoPass(){ }
 
     public String getIdentificador() {
