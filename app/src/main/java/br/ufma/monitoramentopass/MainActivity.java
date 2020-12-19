@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
     LocalizacaoPass localizacaoPass;
 
+    String valorRecebido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,11 +120,19 @@ public class MainActivity extends AppCompatActivity {
         eventBus.register(gps);
         eventBus.getDefault().post(new StartLocationSensorMessage(1000));
 
-        cddl.startSensor("Location");
+        //1cddl.startSensor("Location");
+        cddl.startSensor("Location",10000);
         //subscribeAccelerometer();
         //publishMessage();
 
         eventBus.unregister(gps);
+
+        valorRecebido="";
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            valorRecebido = extras.getString("lat_lon");
+            Log.i(TAG,"##### VALOR RECBIDO: " + valorRecebido);
+        }
     }
 
 
@@ -207,6 +217,21 @@ public class MainActivity extends AppCompatActivity {
             localizacaoPass.setLongitude(message.getSourceLocationLongitude().toString());
             localizacaoPass.setAltitude(valor[2].toString());
             localizacaoPass.setVelocidade(valor[3].toString());
+
+            String mensagemRecebida = StringUtils.join(valorRecebido, ", ");
+            String[] separated = mensagemRecebida.split(",");
+            String lat = String.valueOf(separated[0]);
+            String lon = String.valueOf(separated[1]);
+            lat = lat.replaceAll("[A-Za-z()/:]*", "");    // tira letras e parenteses
+            lon = lon.replaceAll("[A-Za-z()/:]*", "");    // tira letras e parenteses
+            //lat = lat.replace( "/" , "");                   // tira barra
+            //lon = lon.replace( "/" , "");                   // tira barra
+            lat = lat.replace( " " , "");                   // tira espaço em branco
+            lon = lon.replace( " " , "");                   // tira espaço em branco
+            Log.i(TAG,"###### FIM1: " + lat);
+            Log.i(TAG,"###### FIM2: " + lon);
+            localizacaoPass.setLatitudeDestino(lat);
+            localizacaoPass.setLongitudeDestino(lon);
 
             interscityTeste.post(localizacaoPass);
 

@@ -18,7 +18,6 @@ public class LocalizacaoPass {
     public String getIdentificador() {
         return identificador;
     }
-
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
@@ -26,7 +25,6 @@ public class LocalizacaoPass {
     public String getLatitude() {
         return latitude;
     }
-
     public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
@@ -34,7 +32,6 @@ public class LocalizacaoPass {
     public String getLongitude() {
         return longitude;
     }
-
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
@@ -42,7 +39,6 @@ public class LocalizacaoPass {
     public String getAltitude() {
         return altitude;
     }
-
     public void setAltitude(String altitude) {
         this.altitude = altitude;
     }
@@ -50,8 +46,13 @@ public class LocalizacaoPass {
     public String getVelocidade() {
         return velocidade;
     }
-
     public void setVelocidade(String velocidade) {
         this.velocidade = velocidade;
     }
+
+    public String getLatitudeDestino() { return latitudeDestino; }
+    public void setLatitudeDestino(String latDestino) { this.latitudeDestino = latDestino; }
+
+    public String getLongitudeDestino() { return longitudeDestino; }
+    public void setLongitudeDestino(String lonDestino) { this.longitudeDestino = lonDestino; }
 }

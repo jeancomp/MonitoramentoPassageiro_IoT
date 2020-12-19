@@ -14,7 +14,7 @@ public class AppMenu {
 
     // Adicionais Menus no SPINNER(android)=COMBOBOX(html)
     public void setMenu(Menu menu) {
-        menu.add(android.view.Menu.NONE, SUBSCRIBE_SENSOR_MENU_ID, android.view.Menu.NONE, R.string.subscrever_sensores);
+        menu.add(android.view.Menu.NONE, SUBSCRIBE_SENSOR_MENU_ID, android.view.Menu.NONE, R.string.home);
         menu.add(android.view.Menu.NONE, PUB_SUB_MESSAGE_MENU_ID, android.view.Menu.NONE, R.string.pub_sub_mensagem);
         menu.add(android.view.Menu.NONE, SINAIS_VITAIS_MENU_ID, android.view.Menu.NONE, R.string.sinais_vitais);
     }
@@ -33,7 +33,7 @@ public class AppMenu {
                 ctx.startActivity(new Intent(ctx, MainActivity.class));
                 return;
             case PUB_SUB_MESSAGE_MENU_ID:
-                ctx.startActivity(new Intent(ctx, PubSubActivity.class));
+                ctx.startActivity(new Intent(ctx, MapsActivity.class));
                 return;
             case SINAIS_VITAIS_MENU_ID:
                 ctx.startActivity(new Intent(ctx, Sinais_vitais.class));

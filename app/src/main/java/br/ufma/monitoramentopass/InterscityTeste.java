@@ -94,7 +94,12 @@ public class InterscityTeste {
                 {
                     @Override
                     public void onResponse(String response) {
-                        Log.i(TAG,"##### Resultado: " + response);
+                        if(response.equals("{}")){
+                            Log.i(TAG,"##### Resultado:[envio dados com sucesso!] " + response);
+                        }
+                        else{
+                            Log.i(TAG,"##### Resultado:[erro no envio dos dados] " + response);
+                        }
 //                        JSONArray jsonArray = null;
 //                        try {
 //                            jsonArray = new JSONArray(response);
@@ -152,6 +157,8 @@ public class InterscityTeste {
                     params.put("longitude", dadosPassageiro.getLongitude());
                     params.put("altitude", dadosPassageiro.getAltitude());
                     params.put("velocidade", dadosPassageiro.getVelocidade());
+                    params.put("latitudeDestino", dadosPassageiro.getLatitudeDestino());
+                    params.put("longitudeDestino", dadosPassageiro.getLongitudeDestino());
                     params.put("timestamp", nowAsISO);
 
                     JSONArray array = new JSONArray();
