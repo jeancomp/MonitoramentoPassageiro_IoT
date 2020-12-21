@@ -46,15 +46,10 @@ public class InterscityTeste {
         requestQueue = getRequestQueue();
 
         Log.i(TAG,"###### Conectando Interscity");
-
-        // Access the RequestQueue through your singleton class.
-        //Interscity.getInstance(context).addToRequestQueue(jsonObjectRequest);
     }
 
     public RequestQueue getRequestQueue() {
         if (requestQueue == null) {
-            // getApplicationContext() is key, it keeps you from leaking the
-            // Activity or BroadcastReceiver if someone passes one in.
             requestQueue = Volley.newRequestQueue(ctx.getApplicationContext());
         }
         return requestQueue;
@@ -100,32 +95,6 @@ public class InterscityTeste {
                         else{
                             Log.i(TAG,"##### Resultado:[erro no envio dos dados] " + response);
                         }
-//                        JSONArray jsonArray = null;
-//                        try {
-//                            jsonArray = new JSONArray(response);
-//                        }
-//                        catch (JSONException e){
-//                            e.printStackTrace();
-//                        }
-//
-//                        JSONObject r = new JSONObject();
-//                        JSONArray j;
-//                        try{
-//                            for(int i=0; i<jsonArray.length(); i++){
-//                                JSONObject passageiro = jsonArray.getJSONObject(i);
-//                                String latitude = passageiro.getString("latitude");
-//                                String longitude = passageiro.getString("longitude");
-//                                String altitude = passageiro.getString("altitude");
-//                                String velocidade = passageiro.getString("velocidade");
-//
-//                                Log.i(TAG,"###### Resposta do Servidor: " + latitude + longitude + altitude + velocidade);
-//                            }
-//                        }
-//                        catch (JSONException e){
-//                            e.printStackTrace();
-//                        }
-//
-//                        Log.i(TAG,"##### Resposta inteira do servidor: " + response);
                     }
                 },
                 new Response.ErrorListener()

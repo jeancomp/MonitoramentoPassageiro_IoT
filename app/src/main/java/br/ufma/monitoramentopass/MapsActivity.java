@@ -88,6 +88,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+        // Método responsável por selecionar o destino através clique no MAPA
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
             @Override
@@ -134,6 +135,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         telaPrincipal = findViewById(R.id.telaPrincipal);
         button1 = findViewById(R.id.button1);
 
+
+        // Método responsável por pesquisar o Destino através do endereço digitado na tela
         button1.setOnClickListener(new View.OnClickListener() {
 
             @Override
